@@ -1,11 +1,11 @@
 package com.heixss.cats.viewmodels
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import com.heixss.cats.model.repositories.SharedPreferencesRepository
 import io.reactivex.Observable
-import javax.inject.Inject
 
-class StartupViewModel @Inject constructor(private val sharedPreferencesRepository: SharedPreferencesRepository) :
+class StartupViewModel @ViewModelInject constructor(private val sharedPreferencesRepository: SharedPreferencesRepository) :
     ViewModel() {
 
     fun observeAccessToken(): Observable<String> {

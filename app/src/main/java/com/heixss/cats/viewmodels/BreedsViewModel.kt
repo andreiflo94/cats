@@ -1,5 +1,6 @@
 package com.heixss.cats.viewmodels
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,9 +11,8 @@ import io.reactivex.subjects.PublishSubject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
-class BreedsViewModel @Inject constructor(private val breedsRepository: BreedsRepository) :
+class BreedsViewModel @ViewModelInject constructor(private val breedsRepository: BreedsRepository) :
     ViewModel() {
 
     lateinit var unfilteredBreedCards: List<BreedCard>

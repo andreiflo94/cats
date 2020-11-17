@@ -1,5 +1,6 @@
 package com.heixss.cats.viewmodels
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.heixss.cats.model.repositories.LoginRepository
@@ -7,9 +8,8 @@ import com.heixss.cats.model.repositories.SharedPreferencesRepository
 import io.reactivex.Observable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-class LoginViewModel @Inject constructor(
+class LoginViewModel @ViewModelInject constructor(
     private val loginRepository: LoginRepository,
     private val sharedPreferencesRepository: SharedPreferencesRepository
 ) : ViewModel() {

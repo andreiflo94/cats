@@ -1,15 +1,17 @@
-package com.heixss.cats.di.module
+package com.heixss.cats.di
 
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.room.Room
-import com.heixss.cats.CatsApp
 import com.heixss.cats.db.AppDatabase
 import com.heixss.cats.network.CatsApi
 import com.heixss.cats.network.HeadersInterceptor
 import com.heixss.cats.utils.SpDataStore
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.Cache
 import okhttp3.ConnectionPool
 import okhttp3.OkHttpClient
@@ -20,14 +22,10 @@ import java.io.File
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-@Module
-class AppModule {
 
-    @Provides
-    @Singleton
-    fun provideContext(app: CatsApp): Context {
-        return app
-    }
+@Module
+@InstallIn(ApplicationComponent::class)
+class AppModule {
 
     @Provides
     @Singleton
@@ -37,7 +35,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideSpDataStore(context: Context): SpDataStore {
+    fun provideSpDataStore(@ApplicationContext context: Context): SpDataStore {
         return SpDataStore(
             context.getSharedPreferences(
                 context.packageName + "shared_preferences.persist",
@@ -73,19 +71,19 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpCache(context: Context): Cache {
+    fun provideOkHttpCache(@ApplicationContext context: Context): Cache {
         return Cache(File(context.cacheDir, "okhttp-cache"), (3 * 1000 * 1000).toLong())
     }
 
     @Provides
     @Singleton
-    fun provideSharedPreferences(context: Context): SharedPreferences {
+    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
         return context.getSharedPreferences("appprefs", Context.MODE_PRIVATE)
     }
 
     @Singleton
     @Provides
-    fun provideDatabase(context: Context): AppDatabase {
+    fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
         return Room
             .databaseBuilder(context, AppDatabase::class.java, "cats-db")
             .fallbackToDestructiveMigration()

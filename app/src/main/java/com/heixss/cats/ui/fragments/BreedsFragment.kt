@@ -14,14 +14,16 @@ import com.heixss.cats.ui.adapters.BreedCardAdapter
 import com.heixss.cats.ui.adapters.ItemVerticalSpacingDecorator
 import com.heixss.cats.viewmodels.BreedsViewModel
 import com.heixss.cats.viewmodels.Progress
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.breeds_fragment.*
 import java.util.*
 
+@AndroidEntryPoint
 class BreedsFragment : BaseFragment(R.layout.breeds_fragment) {
 
     private lateinit var breedCardAdapter: BreedCardAdapter
-    private val viewModel: BreedsViewModel by viewModels { viewModelFactory }
+    private val viewModel: BreedsViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

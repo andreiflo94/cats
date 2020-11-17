@@ -8,11 +8,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.heixss.cats.R
 import com.heixss.cats.viewmodels.BreedDetailsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.breed_details_fragment.*
 
+@AndroidEntryPoint
 class BreedDetailsFragment : BaseFragment(R.layout.breed_details_fragment) {
 
-    private val viewModel: BreedDetailsViewModel by viewModels { viewModelFactory }
+    private val viewModel: BreedDetailsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

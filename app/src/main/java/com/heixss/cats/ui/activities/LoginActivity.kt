@@ -8,11 +8,13 @@ import androidx.activity.viewModels
 import com.heixss.cats.R
 import com.heixss.cats.model.repositories.VAL_STRING_UNDEFINED
 import com.heixss.cats.viewmodels.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_login.*
 
+@AndroidEntryPoint
 class LoginActivity : BaseActivity() {
 
-    private val viewModel: LoginViewModel by viewModels { viewModelFactory }
+    private val viewModel: LoginViewModel by viewModels()
 
     companion object {
         fun newIntent(context: Context): Intent? {

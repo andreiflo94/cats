@@ -8,12 +8,14 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.heixss.cats.R
 import com.heixss.cats.model.repositories.VAL_STRING_UNDEFINED
 import com.heixss.cats.viewmodels.StartupViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_startup.*
 import java.util.concurrent.TimeUnit
 
+@AndroidEntryPoint
 class StartupActivity : BaseActivity() {
 
-    private val viewModel: StartupViewModel by viewModels { viewModelFactory }
+    private val viewModel: StartupViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
